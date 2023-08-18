@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon 3.LongestSubstringWithoutRepeatingCharacters"
+    "dev": "nodemon 5.LongestPalindromicSubstring"
   },
   "author": "",
   "license": "ISC",
