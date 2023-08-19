@@ -27,8 +27,6 @@ var convert = function (s, numRows) {
     }
   }
 
-  console.log(result);
-
   let output = "";
   for (let i = 0; i < numRows; i++) {
     for (let j = 0; j < result.length; j++) {
