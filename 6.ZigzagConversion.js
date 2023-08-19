@@ -2,6 +2,10 @@ const s = "PAYPALISHIRING";
 const numRows = 4;
 
 var convert = function (s, numRows) {
+  if (numRows === 1 || s.length < numRows) {
+    return s;
+  }
+
   let result = [];
   let str = s.split("");
   while (str.length > 0) {
@@ -14,14 +18,16 @@ var convert = function (s, numRows) {
     result.push(temp);
 
     if (str.length > 0) {
+      temp = Array(numRows).fill("");
       for (let j = numRows - 2; j > 0; j--) {
-        temp = Array(numRows).fill("");
         temp[j] = str.shift();
-        result.push(temp);
         if (str.length === 0) break;
       }
+      result.push(temp);
     }
   }
+
+  console.log(result);
 
   let output = "";
   for (let i = 0; i < numRows; i++) {
@@ -32,7 +38,6 @@ var convert = function (s, numRows) {
     }
   }
   return output;
-  å;
 };
 
 console.log(convert(s, numRows));
