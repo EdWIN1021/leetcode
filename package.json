@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon 14.LongestCommonPrefix."
+    "dev": "nodemon 15.3Sum"
   },
   "author": "",
   "license": "ISC",
