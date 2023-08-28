@@ -1,11 +1,11 @@
 var threeSum = function (nums) {
-  nums.sort((a, b) => a - b);
-  let i = 0;
-  let result = [];
-
   if (nums.every((a) => a === 0)) {
     return [[0, 0, 0]];
   }
+
+  nums.sort((a, b) => a - b);
+  let i = 0;
+  let result = [];
 
   while (i <= nums.length - 3) {
     let j = i + 1;
