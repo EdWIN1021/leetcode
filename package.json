@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon 16.3SumClosest"
+    "dev": "nodemon 17.LetterCombinationsOfAPhoneNumber"
   },
   "author": "",
   "license": "ISC",
