@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon 121.BestTimetoBuyandSellStock"
+    "dev": "nodemon 122.BestTimetoBuyandSellStockII"
   },
   "author": "",
   "license": "ISC",
