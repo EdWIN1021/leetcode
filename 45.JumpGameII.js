@@ -36,4 +36,4 @@ var jump = function (nums) {
   return result;
 };
 
-console.log(jump([2, 1]));
+console.log(jump([2, 3, 0, 1, 4]));

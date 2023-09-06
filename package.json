@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon 45.JumpGameII"
+    "dev": "nodemon 380.InsertDeleteGetRandom"
   },
   "author": "",
   "license": "ISC",
