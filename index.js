@@ -1,7 +1,3 @@
-// *
-
-const s = "bb";
-
 var longestPalindrome = function (s) {
   let result = [0, 1];
 
@@ -23,5 +19,3 @@ const getStr = (left, right, str) => {
   }
   return [left + 1, right];
 };
-
-console.log(longestPalindrome(s));
