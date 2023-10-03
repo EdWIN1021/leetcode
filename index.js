@@ -1,16 +1,14 @@
-var reverseWords = function (s) {
-  let result = "";
-  let right = s.length;
-  let left = right - 1;
+var isSubsequence = function (s, t) {
+  let i = 0;
+  let j = 0;
 
-  while (left >= -1) {
-    if ((s[left] === " " || !s[left]) && s[left - 1] !== " ") {
-      result += s.slice(left + 1, right).trim() + " ";
-      right = left;
+  while (i < t.length) {
+    if (t[i] === s[j]) {
+      j++;
     }
-    left--;
+    i++;
   }
-  return result.trim();
+  return j === s.length;
 };
 
-console.log(reverseWords("the sky is  blue"));
+console.log(isSubsequence("abc", "ahbbgdc"));
