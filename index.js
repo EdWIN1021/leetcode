@@ -1,14 +1,14 @@
-var isSubsequence = function (s, t) {
-  let i = 0;
-  let j = 0;
-
-  while (i < t.length) {
-    if (t[i] === s[j]) {
-      j++;
+var strStr = function (haystack, needle) {
+  for (let i = 0; i < haystack.length; i++) {
+    if (haystack[i] === needle[0]) {
+      for (let j = 0; j <= needle.length; j++) {
+        if (needle === haystack.slice(i, j + i)) {
+          return i;
+        }
+      }
     }
-    i++;
   }
-  return j === s.length;
+  return -1;
 };
 
-console.log(isSubsequence("abc", "ahbbgdc"));
+console.log(strStr("hello", "ll"));
