@@ -1,21 +1,21 @@
-var longestPalindrome = function (s) {
-  let result = [0, 1];
+var minSubArrayLen = function (target, nums) {
+  let result = Infinity;
+  let left = 0;
+  let right = 0;
+  let total = 0;
 
-  for (let i = 0; i < s.length; i++) {
-    let even = getStr(i - 1, i, s);
-    let odd = getStr(i - 1, i + 1, s);
-
-    current = even[1] - even[0] > odd[1] - odd[0] ? even : odd;
-    result = current[1] - current[0] > result[1] - result[0] ? current : result;
+  while (right < nums.length) {
+    total += nums[right];
+    if (total < target) {
+      right++;
+    } else {
+      total = total - nums[left] - nums[right];
+      result = Math.min(result, right - left + 1);
+      left++;
+    }
   }
-  return s.slice(result[0], result[1]);
+
+  return result === Infinity ? 0 : result;
 };
 
-const getStr = (left, right, str) => {
-  while (left >= 0 && right < str.length) {
-    if (str[left] !== str[right]) break;
-    left--;
-    right++;
-  }
-  return [left + 1, right];
-};
+console.log(minSubArrayLen(7, [2, 3, 1, 2, 4, 3]));
