@@ -5,7 +5,8 @@ var rotate = function (matrix) {
   let bottom = matrix.length - 1;
 
   while (left < right) {
-    for (let i = 0; i < right - left; i++) { // right -left !!!!1
+    for (let i = 0; i < right - left; i++) {
+      // right -left !!!!1
       let temp = matrix[top][left + i];
 
       let temp1 = matrix[top + i][right];
@@ -26,6 +27,8 @@ var rotate = function (matrix) {
     bottom--;
     right--;
   }
+
+  console.log(matrix);
 };
 
 rotate([
