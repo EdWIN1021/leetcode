@@ -1,39 +1,22 @@
-var rotate = function (matrix) {
-  let left = 0;
-  let top = 0;
-  let right = matrix.length - 1;
-  let bottom = matrix.length - 1;
+var canConstruct = function (ransomNote, magazine) {
+  const map = new Map();
 
-  while (left < right) {
-    for (let i = 0; i < right - left; i++) {
-      // right -left !!!!1
-      let temp = matrix[top][left + i];
-
-      let temp1 = matrix[top + i][right];
-      matrix[top + i][right] = temp;
-
-      let temp2 = matrix[bottom][right - i];
-      matrix[bottom][right - i] = temp1;
-
-      let temp3 = matrix[bottom - i][left];
-      matrix[bottom - i][left] = temp2;
-
-      matrix[top][left + i] = temp3;
+  for (let i = 0; i < magazine.length; i++) {
+    if (!map.has(magazine[i])) {
+      map.set(magazine[i], 1);
+    } else {
+      map.set(magazine[i], map.get(magazine[i]) + 1);
     }
-
-    top++;
-    left++;
-
-    bottom--;
-    right--;
   }
 
-  console.log(matrix);
+  for (let i = 0; i < ransomNote.length; i++) {
+    if (!map.has(ransomNote[i]) || map.get(ransomNote[i]) === 0) {
+      return false;
+    } else {
+      map.set(ransomNote[i], map.get(ransomNote[i]) - 1);
+    }
+  }
+  return true;
 };
 
-rotate([
-  [5, 1, 9, 11],
-  [2, 4, 8, 10],
-  [13, 3, 6, 7],
-  [15, 14, 12, 16],
-]);
+console.log(canConstruct("aaa", "aaab"));
