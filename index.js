@@ -5,7 +5,6 @@ var isIsomorphic = function (s, t) {
   const mapS = new Map();
 
   for (let i = 0; i < s.length; i++) {
-    console.log(i);
     if (!mapT.get(s[i])) {
       mapT.set(s[i], t[i]);
     }
