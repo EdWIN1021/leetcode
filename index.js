@@ -1,22 +1,24 @@
-var canConstruct = function (ransomNote, magazine) {
-  const map = new Map();
+var isHappy = function (n) {
+  const nums = [];
 
-  for (let i = 0; i < magazine.length; i++) {
-    if (!map.has(magazine[i])) {
-      map.set(magazine[i], 1);
-    } else {
-      map.set(magazine[i], map.get(magazine[i]) + 1);
+  while (true) {
+    let sum = n
+      .toString()
+      .split("")
+      .reduce((acc, curr) => acc + Math.pow(curr, 2), 0);
+
+    if (sum === 1) {
+      return true;
     }
-  }
 
-  for (let i = 0; i < ransomNote.length; i++) {
-    if (!map.has(ransomNote[i]) || map.get(ransomNote[i]) === 0) {
+    if (!nums.includes(sum)) {
+      nums.push(sum);
+    } else {
       return false;
-    } else {
-      map.set(ransomNote[i], map.get(ransomNote[i]) - 1);
     }
+
+    n = sum;
   }
-  return true;
 };
 
-console.log(canConstruct("aaa", "aaab"));
+console.log(isHappy(2));
