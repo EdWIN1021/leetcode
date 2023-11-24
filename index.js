@@ -1,24 +1,24 @@
-var isHappy = function (n) {
-  const nums = [];
+//  [9, 9, 9] + 1 = [1, 0, 0, 0]
 
-  while (true) {
-    let sum = n
-      .toString()
-      .split("")
-      .reduce((acc, curr) => acc + Math.pow(curr, 2), 0);
+var plusOne = function (digits) {
+  const nums = digits.reverse();
 
-    if (sum === 1) {
-      return true;
-    }
+  for (let i = 0; i < nums.length; i++) {
+    let curr = nums[i] + 1;
 
-    if (!nums.includes(sum)) {
-      nums.push(sum);
+    if (curr > 9) {
+      nums[i] = 0;
     } else {
-      return false;
+      nums[i] = curr;
+      break;
     }
-
-    n = sum;
   }
+
+  if (nums[nums.length - 1] === 0) {
+    nums.push(1);
+  }
+
+  return nums.reverse();
 };
 
-console.log(isHappy(2));
+console.log(plusOne([2, 3, 9]));
