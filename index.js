@@ -1,24 +1,7 @@
-//  [9, 9, 9] + 1 = [1, 0, 0, 0]
+var isSameTree = function (p, q) {
+  if (!p && !q) return true;
+  if (!p || !q) return false;
+  if (p.val != q.val) return false;
 
-var plusOne = function (digits) {
-  const nums = digits.reverse();
-
-  for (let i = 0; i < nums.length; i++) {
-    let curr = nums[i] + 1;
-
-    if (curr > 9) {
-      nums[i] = 0;
-    } else {
-      nums[i] = curr;
-      break;
-    }
-  }
-
-  if (nums[nums.length - 1] === 0) {
-    nums.push(1);
-  }
-
-  return nums.reverse();
+  return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
 };
-
-console.log(plusOne([2, 3, 9]));
