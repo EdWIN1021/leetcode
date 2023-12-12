@@ -16,9 +16,10 @@ var isAnagram = function (s, t) {
     } else {
       return false;
     }
+    map.get(t[i]) === 0 && map.delete(t[i]);
   }
 
-  return Array(...map.values()).every((val) => val === 0);
+  return map.size === 0;
 };
 
 console.log(isAnagram("anagram", "nagaram"));
