@@ -1,20 +1,24 @@
-var wordPattern = function (pattern, s) {
-  const str = s.split(" ");
-  if (str.length !== pattern.length) return false;
+var isAnagram = function (s, t) {
   const map = new Map();
+  if (s.length !== t.length) return false;
 
-  for (let i = 0; i < str.length; i++) {
-    if (
-      !map.get(str[i]) &&
-      !map.has(str[i]) &&
-      !Array(...map.values()).includes(pattern[i])
-    ) {
-      map.set(str[i], pattern[i]);
-    } else if (map.get(str[i]) !== pattern[i]) {
+  for (let i = 0; i < s.length; i++) {
+    if (!map.get(s[i])) {
+      map.set(s[i], 1);
+    } else {
+      map.set(s[i], map.get(s[i]) + 1);
+    }
+  }
+
+  for (let i = 0; i < t.length; i++) {
+    if (map.get(t[i])) {
+      map.set(t[i], map.get(t[i]) - 1);
+    } else {
       return false;
     }
   }
-  return true;
+
+  return Array(...map.values()).every((val) => val === 0);
 };
 
-console.log(wordPattern("abba", "dog dog dog dog"));
+console.log(isAnagram("anagram", "nagaram"));
