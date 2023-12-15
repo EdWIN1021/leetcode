@@ -1,20 +1,19 @@
-var summaryRanges = function (nums) {
+var maxArea = function (height) {
   let left = 0;
-  let right = 0;
-  let result = [];
+  let right = height.length - 1;
+  let result = 0;
 
-  while (right < nums.length) {
-    if (nums[right] + 1 !== nums[right + 1]) {
-      if (nums[left] === nums[right]) {
-        result.push(`${nums[left]}`);
-      } else {
-        result.push(`${nums[left]}->${nums[right]}`);
-      }
-      left = right + 1;
+  while (left !== right) {
+    let area = Math.min(height[left], height[right]) * (right - left);
+    result = Math.max(area, result);
+    if (height[left] <= height[right]) {
+      left++;
+    } else {
+      right--;
     }
-    right++;
   }
+
   return result;
 };
 
-summaryRanges([0, 2, 3, 4, 6, 8, 9]);
+console.log(maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]));
