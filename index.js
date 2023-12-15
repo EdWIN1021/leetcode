@@ -1,19 +1,8 @@
-var maxArea = function (height) {
-  let left = 0;
-  let right = height.length - 1;
-  let result = 0;
-
-  while (left !== right) {
-    let area = Math.min(height[left], height[right]) * (right - left);
-    result = Math.max(area, result);
-    if (height[left] <= height[right]) {
-      left++;
-    } else {
-      right--;
-    }
+var singleNumber = function (nums) {
+  let uniqNum = 0;
+  for (let idx = 0; idx < nums.length; idx++) {
+    uniqNum = uniqNum ^ nums[idx];
   }
 
-  return result;
+  return uniqNum;
 };
-
-console.log(maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]));
