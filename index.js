@@ -1,8 +1,12 @@
-var singleNumber = function (nums) {
-  let uniqNum = 0;
-  for (let idx = 0; idx < nums.length; idx++) {
-    uniqNum = uniqNum ^ nums[idx];
+var twoSum = function (nums, target) {
+  const map = new Map();
+  for (let i = 0; i < nums.length; i++) {
+    if (!map.has(nums[i])) {
+      map.set(target - nums[i], i);
+    } else {
+      return [map.get(nums[i]), i];
+    }
   }
-
-  return uniqNum;
 };
+
+console.log(twoSum([3, 2, 4], 6));
