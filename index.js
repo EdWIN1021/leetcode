@@ -1,8 +1,11 @@
-var singleNumber = function (nums) {
-  let uniqNum = 0;
-  for (let idx = 0; idx < nums.length; idx++) {
-    uniqNum = uniqNum ^ nums[idx];
-  }
+var hasCycle = function (head) {
+  let slow = head;
+  let fast = head;
 
-  return uniqNum;
+  while (fast && fast.next) {
+    slow = slow.next;
+    fast = fast.next.next;
+    if (slow === fast) return true;
+  }
+  return false;
 };
