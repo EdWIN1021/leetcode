@@ -1,12 +1,11 @@
-var twoSum = function (nums, target) {
-  const map = new Map();
-  for (let i = 0; i < nums.length; i++) {
-    if (!map.has(nums[i])) {
-      map.set(target - nums[i], i);
-    } else {
-      return [map.get(nums[i]), i];
-    }
-  }
+var isSymmetric = function (root) {
+  if (!root) return true;
+  return check(root.left, root.right);
 };
 
-console.log(twoSum([3, 2, 4], 6));
+var check = (left, right) => {
+  if (!left && !right) return true;
+  if (!left || !right) return false;
+  if (left.val !== right.val) return false;
+  return check(left.left, right.right) && check(left.right, right.left);
+};
