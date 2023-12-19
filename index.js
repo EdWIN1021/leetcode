@@ -1,11 +1,12 @@
-var isSymmetric = function (root) {
-  if (!root) return true;
-  return check(root.left, root.right);
-};
+var hasPathSum = function (root, targetSum) {
+  if (!root) return false;
 
-var check = (left, right) => {
-  if (!left && !right) return true;
-  if (!left || !right) return false;
-  if (left.val !== right.val) return false;
-  return check(left.left, right.right) && check(left.right, right.left);
+  if (!root.left && !root.right) {
+    return targetSum === root.val;
+  } else {
+    return (
+      hasPathSum(root.left, targetSum - root.val) ||
+      hasPathSum(root.right, targetSum - root.val)
+    );
+  }
 };
