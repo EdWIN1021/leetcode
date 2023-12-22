@@ -1,17 +1,17 @@
-var rotate = function (nums, k) {
-  k %= nums.length;
+var getMinimumDifference = function (root) {
+  let pre = null;
+  let result = Infinity;
 
-  let reverse = function (i, j) {
-    while (i < j) {
-      let temp = nums[i];
-      nums[i] = nums[j];
-      nums[j] = temp;
-      i++;
-      j--;
+  const dfs = (root) => {
+    if (!root) return;
+    dfs(root.left);
+    if (pre) {
+      result = Math.min(result, Math.abs(root.val - pre.val));
     }
+    pre = root;
+    dfs(root.right);
   };
-  reverse(0, nums.length - 1);
-  reverse(0, k - 1);
-  reverse(k, nums.length - 1);
+  
+  dfs(root);
+  return result;
 };
-rotate([1, 2, 3, 4, 5, 6, 7], 3);
