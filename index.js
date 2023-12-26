@@ -1,19 +1,24 @@
-var maxProfit = function (prices) {
-  let left = 0;
-  let right = left + 1;
-  let result = 0;
+var addBinary = function (a, b) {
+  let result = [];
+  a = a.split("").reverse();
+  b = b.split("").reverse();
 
-  while (right < prices.length) {
-    if (prices[left] < prices[right]) {
-      result = Math.max(result, prices[right] - prices[left]);
-      right++;
+  let carry = 0;
+
+  for (let i = 0; i < Math.max(a.length, b.length); i++) {
+    let sum = Number(a[i] || 0) + Number(b[i] || 0);
+
+    if (sum > 1) {
+      result.unshift(carry);
+      carry = 1;
     } else {
-      left = right;
-      right = left + 1;
+      result.unshift(sum + carry > 1 ? 0 : sum + carry);
+      carry = sum + carry > 1 ? 1 : 0;
     }
   }
 
-  return result;
+  if (carry === 1) result.unshift(1);
+  return result.join("");
 };
 
-console.log(maxProfit([7, 1, 5, 3, 6, 4]));
+console.log(addBinary("1111", "1111"));
