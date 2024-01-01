@@ -1,21 +1,11 @@
-var mySqrt = function (x) {
-  let left = 0;
-  let right = x;
+var climbStairs = function (n) {
+  let one = 1;
+  let two = 1;
 
-  while (left <= right) {
-    let mid = Math.floor((left + right) / 2);
-    if (mid * mid <= x && (mid + 1) * (mid + 1) > x) {
-      return mid;
-    } else if (mid * mid > x) {
-      right = mid - 1;
-    } else {
-      left = mid + 1;
-    }
+  for (let i = 0; i < n - 1; i++) {
+    let tmp = one;
+    one = one + two;
+    two = tmp;
   }
-
-  return -1;
+  return one;
 };
-
-console.log(mySqrt(8));
-
-// 0 1 2 3 4 5 6 7 8
