@@ -1,12 +1,21 @@
-function reverseBits(n) {
-  let result = 0;
-  for (let i = 0; i < 32; i++) {
-    if (n & (1 === 1)) result++;
-    n >>>= 1;
-  }
-  return result;
-}
+var mySqrt = function (x) {
+  let left = 0;
+  let right = x;
 
-let n = 43261596;
-let result = reverseBits(n);
-console.log(result);
+  while (left <= right) {
+    let mid = Math.floor((left + right) / 2);
+    if (mid * mid <= x && (mid + 1) * (mid + 1) > x) {
+      return mid;
+    } else if (mid * mid > x) {
+      right = mid - 1;
+    } else {
+      left = mid + 1;
+    }
+  }
+
+  return -1;
+};
+
+console.log(mySqrt(8));
+
+// 0 1 2 3 4 5 6 7 8
