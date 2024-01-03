@@ -5,10 +5,8 @@ var canJump = function (nums) {
   while (left >= 0) {
     if (nums[left] >= right - left) {
       right = left;
-      left = right - 1;
-    } else {
-      left--;
     }
+    left--;
   }
 
   return right === 0;
