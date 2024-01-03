@@ -1,19 +1,20 @@
-var rotate = function (nums, k) {
-  k %= nums.length;
+var maxProfit = function (prices) {
+  let result = 0;
 
-  let reverse = function (i, j) {
-    while (i < j) {
-      let temp = nums[i];
-      nums[i] = nums[j];
-      nums[j] = temp;
-      i++;
-      j--;
+  let left = 0;
+  let right = left + 1;
+
+  while (right < prices.length) {
+    if (prices[left] > prices[right]) {
+      left++;
+    } else {
+      result += prices[right] - prices[left];
+      left = right;
     }
-  };
-  reverse(0, nums.length - 1);
-  reverse(0, k - 1);
-  reverse(k, nums.length - 1);
 
-  console.log(nums);
+    right++;
+  }
+  return result;
 };
-rotate([1, 2, 3, 4, 5, 6, 7], 3);
+
+console.log(maxProfit([1, 2, 3, 4, 5]));
