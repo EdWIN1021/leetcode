@@ -5,6 +5,7 @@ var isValidSudoku = function (board) {
 
   for (let i = 0; i < 9; i++) {
     for (let j = 0; j < 9; j++) {
+      let currBoxIndex = `${Math.floor(i / 3)},${Math.floor(j / 3)}`;
       if (board[i][j] === ".") {
         continue;
       }
@@ -18,10 +19,8 @@ var isValidSudoku = function (board) {
       }
 
       if (
-        boxes.get(`${Math.floor(i / 3)},${Math.floor(j / 3)}`) &&
-        boxes
-          .get(`${Math.floor(i / 3)},${Math.floor(j / 3)}`)
-          .includes(board[i][j])
+        boxes.get(currBoxIndex) &&
+        boxes.get(currBoxIndex).includes(board[i][j])
       ) {
         return false;
       }
@@ -38,13 +37,10 @@ var isValidSudoku = function (board) {
         cols.set(j, [...cols.get(j), board[i][j]]);
       }
 
-      if (!boxes.has(`${Math.floor(i / 3)},${Math.floor(j / 3)}`)) {
-        boxes.set(`${Math.floor(i / 3)},${Math.floor(j / 3)}`, [board[i][j]]);
+      if (!boxes.has(currBoxIndex)) {
+        boxes.set(currBoxIndex, [board[i][j]]);
       } else {
-        boxes.set(`${Math.floor(i / 3)},${Math.floor(j / 3)}`, [
-          ...boxes.get(`${Math.floor(i / 3)},${Math.floor(j / 3)}`),
-          board[i][j],
-        ]);
+        boxes.set(currBoxIndex, [...boxes.get(currBoxIndex), board[i][j]]);
       }
     }
   }
