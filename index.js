@@ -1,19 +1,17 @@
-var rotate = function (nums, k) {
-  k %= nums.length;
+var canJump = function (nums) {
+  let right = nums.length - 1;
+  let left = right - 1;
 
-  let reverse = function (i, j) {
-    while (i < j) {
-      let temp = nums[i];
-      nums[i] = nums[j];
-      nums[j] = temp;
-      i++;
-      j--;
+  while (left >= 0) {
+    if (nums[left] >= right - left) {
+      right = left;
+      left = right - 1;
+    } else {
+      left--;
     }
-  };
-  reverse(0, nums.length - 1);
-  reverse(0, k - 1);
-  reverse(k, nums.length - 1);
+  }
 
-  console.log(nums);
+  return right === 0;
 };
-rotate([1, 2, 3, 4, 5, 6, 7], 3);
+
+console.log(canJump([2, 3, 1, 1, 4]));
