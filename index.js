@@ -1,20 +1,32 @@
-var maxProfit = function (prices) {
-  let result = 0;
-
-  let left = 0;
-  let right = left + 1;
-
-  while (right < prices.length) {
-    if (prices[left] > prices[right]) {
-      left++;
-    } else {
-      result += prices[right] - prices[left];
-      left = right;
-    }
-
-    right++;
-  }
-  return result;
+var RandomizedSet = function () {
+  this.nums = [];
 };
 
-console.log(maxProfit([1, 2, 3, 4, 5]));
+RandomizedSet.prototype.insert = function (val) {
+  if (this.nums.includes(val)) {
+    return false;
+  }
+
+  this.nums.push(val);
+  return true;
+};
+
+RandomizedSet.prototype.remove = function (val) {
+  if (!this.nums.includes(val)) {
+    return false;
+  } else {
+    this.nums = this.nums.filter((num) => num !== val);
+    return true;
+  }
+};
+
+RandomizedSet.prototype.getRandom = function () {
+  return this.nums[Math.floor(Math.random() * this.nums.length)];
+};
+
+const obj = new RandomizedSet();
+
+var param_1 = obj.insert(1);
+var param_2 = obj.insert(2);
+var param_2 = obj.insert(2);
+var param_3 = obj.getRandom();
