@@ -1,14 +1,23 @@
-var groupAnagrams = function (strs) {
-  const map = new Map();
-  for (let i = 0; i < strs.length; i++) {
-    let sortedStr = strs[i].split("").sort().join("");
-    if (!map.has(sortedStr)) {
-      map.set(sortedStr, [strs[i]]);
-    } else if (map.get(sortedStr)) {
-      map.set(sortedStr, [...map.get(sortedStr), strs[i]]);
+var longestConsecutive = function (nums) {
+  let max = 0;
+  let length = 0;
+
+  nums = nums.sort((a, b) => a - b);
+
+  for (let i = 0; i <= nums.length - 1; i++) {
+    if (nums[i] === nums[i + 1]) {
+      continue;
+    }
+
+    if (nums[i] + 1 === nums[i + 1]) {
+      length += 1;
+    } else {
+      max = Math.max(max, length);
+      length = 0;
     }
   }
-  return [...map.values()];
+
+  return nums.length < 1 ? 0 : max + 1;
 };
 
-console.log(groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]));
+console.log(longestConsecutive([1, 2, 0, 1]));
