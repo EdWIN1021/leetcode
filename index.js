@@ -1,16 +1,14 @@
-var productExceptSelf = function (nums) {
-  let prefix = 1;
-  let result = [];
-  for (let i = 0; i < nums.length; i++) {
-    result[i] = prefix;
-    prefix *= nums[i];
+var groupAnagrams = function (strs) {
+  const map = new Map();
+  for (let i = 0; i < strs.length; i++) {
+    let sortedStr = strs[i].split("").sort().join("");
+    if (!map.has(sortedStr)) {
+      map.set(sortedStr, [strs[i]]);
+    } else if (map.get(sortedStr)) {
+      map.set(sortedStr, [...map.get(sortedStr), strs[i]]);
+    }
   }
-
-  prefix = 1;
-  for (let i = nums.length - 1; i >= 0; i--) {
-    result[i] *= prefix;
-    prefix *= nums[i];
-  }
-  return result;
+  return [...map.values()];
 };
-productExceptSelf([1, 2, 3, 4]);
+
+console.log(groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]));
