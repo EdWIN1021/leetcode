@@ -1,23 +1,25 @@
-var longestConsecutive = function (nums) {
-  let max = 0;
-  let length = 0;
+var merge = function (intervals) {
+  intervals = intervals.sort((a, b) => a[0] - b[0]);
+  const output = [intervals[0]];
 
-  nums = nums.sort((a, b) => a - b);
-
-  for (let i = 0; i <= nums.length - 1; i++) {
-    if (nums[i] === nums[i + 1]) {
-      continue;
-    }
-
-    if (nums[i] + 1 === nums[i + 1]) {
-      length += 1;
+  for (let i = 1; i < intervals.length; i++) {
+    let currEnd = output[output.length - 1][1];
+    if (intervals[i][0] <= currEnd) {
+      output[output.length - 1][1] = Math.max(intervals[i][1], currEnd);
     } else {
-      max = Math.max(max, length);
-      length = 0;
+      output.push(intervals[i]);
     }
   }
 
-  return nums.length < 1 ? 0 : max + 1;
+  return output;
 };
 
-console.log(longestConsecutive([1, 2, 0, 1]));
+merge([
+  [2, 3],
+  [2, 2],
+  [3, 3],
+  [1, 3],
+  [5, 7],
+  [2, 2],
+  [4, 6],
+]);
