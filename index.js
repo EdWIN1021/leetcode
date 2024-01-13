@@ -1,18 +1,19 @@
-var insert = function (intervals, newInterval) {
-  let [start, end] = newInterval;
-  let left = [];
-  let right = [];
+function TreeNode(val, left, right) {
+  this.val = val === undefined ? 0 : val;
+  this.left = left === undefined ? null : left;
+  this.right = right === undefined ? null : right;
+}
 
-  for (const interval of intervals) {
-    const [first, last] = interval;
+var buildTree = function (preorder, inorder) {
+  if (!inorder.length || !preorder.length) return null;
 
-    if (last < start) left.push(interval);
-    else if (first > end) right.push(interval);
-    else {
-      start = Math.min(start, first);
-      end = Math.max(end, last);
-    }
-  }
+  let root = new TreeNode(preorder[0]);
 
-  return [...left, [start, end], ...right];
+  let mid = inorder.findIndex((num) => num === preorder[0]);
+  root.left = buildTree(preorder.slice(1, mid + 1), inorder.slice(0, mid));
+  root.right = buildTree(preorder.slice(mid + 1), inorder.slice(mid + 1));
+
+  return root;
 };
+
+buildTree([3, 9, 20, 15, 7], [9, 3, 15, 20, 7]);
