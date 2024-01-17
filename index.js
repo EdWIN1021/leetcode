@@ -1,12 +1,32 @@
-var twoSum = function (nums, target) {
-  const map = new Map();
-  for (let i = 0; i < nums.length; i++) {
-    if (!map.has(nums[i])) {
-      map.set(target - nums[i], i);
+var evalRPN = function (tokens) {
+  const stack = [];
+  for (let i = 0; i < tokens.length; i++) {
+    if (isNaN(Number(tokens[i]))) {
+      let num1 = Number(stack.pop());
+      let num2 = Number(stack.pop());
+
+      if (tokens[i] === "+") {
+        stack.push(num1 + num2);
+      }
+
+      if (tokens[i] === "-") {
+        stack.push(num2 - num1);
+      }
+
+      if (tokens[i] === "*") {
+        stack.push(num1 * num2);
+      }
+
+      if (tokens[i] === "/") {
+        stack.push(Math.trunc(num2 / num1));
+      }
     } else {
-      return [map.get(nums[i]), i];
+      stack.push(tokens[i]);
     }
   }
+  return stack[0];
 };
 
-console.log(twoSum([3, 2, 4], 6));
+console.log(
+  evalRPN(["10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"])
+);
