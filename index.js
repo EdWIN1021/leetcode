@@ -1,12 +1,18 @@
-var twoSum = function (nums, target) {
+var copyRandomList = function (head) {
   const map = new Map();
-  for (let i = 0; i < nums.length; i++) {
-    if (!map.has(nums[i])) {
-      map.set(target - nums[i], i);
-    } else {
-      return [map.get(nums[i]), i];
-    }
+  let curr = head;
+  
+  while (curr) {
+    map.set(curr, new Node(curr.val));
+    curr = curr.next;
   }
-};
 
-console.log(twoSum([3, 2, 4], 6));
+  curr = head;
+
+  while (curr) {
+    map.get(curr).next = map.get(curr.next) || null;
+    map.get(curr).random = map.get(curr.random) || null;
+    curr = curr.next;
+  }
+  return map.get(head);
+};
