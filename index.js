@@ -1,18 +1,25 @@
-var copyRandomList = function (head) {
-  const map = new Map();
+var reverseBetween = function (head, left, right) {
+  const arr = [];
   let curr = head;
-  
+  let counter = 1;
+
   while (curr) {
-    map.set(curr, new Node(curr.val));
+    if (counter >= left && counter <= right) {
+      arr.unshift(curr.val);
+    }
+    counter++;
     curr = curr.next;
   }
 
   curr = head;
+  counter = 1;
 
   while (curr) {
-    map.get(curr).next = map.get(curr.next) || null;
-    map.get(curr).random = map.get(curr.random) || null;
+    if (counter >= left && counter <= right) {
+      curr.val = arr.shift();
+    }
+    counter++;
     curr = curr.next;
   }
-  return map.get(head);
+  return head;
 };
