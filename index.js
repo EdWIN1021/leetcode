@@ -1,25 +1,24 @@
-var reverseBetween = function (head, left, right) {
-  const arr = [];
-  let curr = head;
-  let counter = 1;
+var deleteDuplicates = function (head) {
+  if (!head) return null;
+  const dummy = new ListNode();
+  dummy.next = head;
 
-  while (curr) {
-    if (counter >= left && counter <= right) {
-      arr.unshift(curr.val);
-    }
-    counter++;
-    curr = curr.next;
-  }
-
+  let pre = dummy;
   curr = head;
-  counter = 1;
 
   while (curr) {
-    if (counter >= left && counter <= right) {
-      curr.val = arr.shift();
+    while (curr.next && curr.val === curr.next.val) {
+      curr = curr.next;
     }
-    counter++;
+
+    if (pre.next === curr) {
+      pre = curr;
+    } else {
+      pre.next = curr.next;
+    }
+
     curr = curr.next;
   }
-  return head;
+
+  return dummy.next;
 };
