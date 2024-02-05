@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon 77.Combinations"
+    "dev": "nodemon 236.LowestCommonAncestorofaBinaryTree"
   },
   "author": "",
   "license": "ISC",
