@@ -11,26 +11,11 @@ func main(){
 }
 
 func rob(nums []int) int {
-	result := []int{};
-
-	for i, v := range nums{
-     var rob1 int
-	 var rob2 int
-
-	 if i - 1 < 0 {
-		rob1 = 0
-		rob2 = v
-	 } else if i - 2 < 0 {
-		rob1 = result[i-1]
-		rob2 = v
-
-	 }  else {
-		rob1 = result[i-1]
-		rob2 = result[i-2] + v
-	 }
-
-	 result = append(result, slices.Max([]int{ rob1, rob2}))
+	rob1, rob2 := 0,0 
+	for _, v := range nums {
+		temp := rob2
+		rob2 = slices.Max([]int{ rob2, rob1 + v })
+		rob1 = temp
 	}
-
-    return result[len(result)-1];
+    return rob2;
 }
