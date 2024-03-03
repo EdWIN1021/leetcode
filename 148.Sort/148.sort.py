@@ -39,9 +39,9 @@ def merge(left, right):
 
 
 def sortList(head):
-  if not head or not head.next:
-     return head
-  
+  if not head or not head.next:   
+      return head
+ 
   mid = getMid(head)
   left = head
   right = mid.next
