@@ -21,4 +21,3 @@ class Solution(object):
     return result
   
   print(combinationSum([2,3,6,7],7))
-
