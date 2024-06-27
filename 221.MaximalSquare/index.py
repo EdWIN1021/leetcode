@@ -4,9 +4,6 @@ class Solution(object):
     cache = {}
 
     def helper(r, c):
-
-      tmp = (r, c)
-
       if r >= ROWS or c >= COLS:
         return 0
       
