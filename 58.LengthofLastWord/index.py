@@ -3,3 +3,8 @@ def lengthOfLastWord(s):
 
 
 lengthOfLastWord("   fly me   to   the moon  ")
+
+
+
+
+print("a b c".split(" "))
