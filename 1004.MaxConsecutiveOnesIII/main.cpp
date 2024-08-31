@@ -1,9 +1,8 @@
 #include <vector>
 #include <iostream>
+#include <algorithm>
 
-using namespace std;
-
-int longestOnes(vector<int>& nums, int k) {
+int longestOnes(std::vector<int>& nums, int k) {
     int max_length = 0;
     int zero_count = 0;
     int left = 0;
@@ -19,15 +18,15 @@ int longestOnes(vector<int>& nums, int k) {
             }
             left++;
         }
-        max_length = max(max_length, right - left + 1);
+        max_length = std::max(max_length, right - left + 1);
     };
     return max_length;
 }
 
 
 int main() {
-    vector<int> nums { 0,0,1,1,0,0,1,1,1,0,1,1,0,0,0,1,1,1,1 };
-    cout << longestOnes(nums, 3) << endl;
+    std::vector<int> nums { 0,0,1,1,0,0,1,1,1,0,1,1,0,0,0,1,1,1,1 };
+    std::cout << longestOnes(nums, 3) << std::endl;
 
     return 0;
 }
